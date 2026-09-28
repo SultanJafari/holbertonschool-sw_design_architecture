@@ -1,9 +1,31 @@
 classDiagram
+    class Library {
+        +add_book()
+        +register_user()
+        +create_loan()
+    }
 
-class Car {
-    brand: str
-    model: str
-    color: str
-    start()
-    stop()
-}
+    class Book {
+        +string title
+        +string author
+        +boolean state
+        +mark_as_unavailable()
+        +mark_as_available()
+    }
+
+    class User {
+        +string name
+        +string email
+    }
+
+    class Loan {
+        +string start_date
+        +string end_date
+        +close_loan()
+    }
+
+    Library "1" o-- "0..*" Book : contains
+    Library "1" o-- "0..*" User : manages
+    Library "1" o-- "0..*" Loan : tracks
+    Loan "0..*" --> "1" Book : references
+    Loan "0..*" --> "1" User : belongs_to
