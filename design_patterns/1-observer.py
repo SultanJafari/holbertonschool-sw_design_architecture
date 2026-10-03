@@ -64,8 +64,8 @@ def main() -> None:
     sms_obs = SmsObserver()
 
     # Subscribe observers with their respective topic filters
-    news.subscribe(email_obs, topics=None)  # Subscribed to all topics
     news.subscribe(log_obs, topics={"sports", "breaking"})
+    news.subscribe(email_obs, topics=None)  # Subscribed to all topics
     news.subscribe(sms_obs, topics={"breaking"})  # Only subscribes to breaking news
 
     # Trigger events
