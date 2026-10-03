@@ -14,7 +14,11 @@ class NewsSubject:
         # (None means all topics)
         self._observers: Dict[object, Optional[Set[str]]] = {}
 
-    def subscribe(self, observer: object, topics: Optional[Set[str]] = None) -> None:
+    def subscribe(
+        self,
+        observer: object,
+        topics: Optional[Set[str]] = None
+    ) -> None:
         """Subscribe an observer to specific topics or all topics if None."""
         self._observers[observer] = topics
 
@@ -66,7 +70,8 @@ def main() -> None:
     # Subscribe observers with their respective topic filters
     news.subscribe(log_obs, topics={"sports", "breaking"})
     news.subscribe(email_obs, topics=None)  # Subscribed to all topics
-    news.subscribe(sms_obs, topics={"breaking"})  # Only subscribes to breaking news
+    # Only subscribes to breaking news
+    news.subscribe(sms_obs, topics={"breaking"})
 
     # Trigger events
     news.notify("weather", "rain")
