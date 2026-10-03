@@ -1,16 +1,17 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Observer pattern implementation - Adding a new subscriber (SmsObserver).
 """
 
-from typing import Callable, Dict, List, Optional, Set, Tuple
+from typing import Dict, Optional, Set
 
 
 class NewsSubject:
     """The subject (publisher) that manages observers and broadcasts events."""
 
     def __init__(self) -> None:
-        # Maps observer to the set of topics they care about (None means all topics)
+        # Maps observer to the set of topics they care about
+        # (None means all topics)
         self._observers: Dict[object, Optional[Set[str]]] = {}
 
     def subscribe(self, observer: object, topics: Optional[Set[str]] = None) -> None:
